@@ -19,7 +19,7 @@ provider:
   # These environment variables are made available to our functions
   # under process.env.
   environment:
-    tableName: users
+    tableName: notes
     stripeSecretKey: ${env:STRIPE_SECRET_KEY}
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
@@ -47,7 +47,7 @@ functions:
     handler: create.main
     events:
       - http:
-          path: users
+          path: notes
           method: post
           cors: true
           authorizer: aws_iam
@@ -59,7 +59,7 @@ functions:
     handler: get.main
     events:
       - http:
-          path: users/{id}
+          path: notes/{id}
           method: get
           cors: true
           authorizer: aws_iam
@@ -71,7 +71,7 @@ functions:
     handler: list.main
     events:
       - http:
-          path: users
+          path: notes
           method: get
           cors: true
           authorizer: aws_iam
@@ -83,7 +83,7 @@ functions:
     handler: update.main
     events:
       - http:
-          path: users/{id}
+          path: notes/{id}
           method: put
           cors: true
           authorizer: aws_iam
@@ -95,7 +95,7 @@ functions:
     handler: delete.main
     events:
       - http:
-          path: users/{id}
+          path: notes/{id}
           method: delete
           cors: true
           authorizer: aws_iam
